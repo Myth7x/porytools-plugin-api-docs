@@ -13,6 +13,8 @@ add-package = ["pt"]
 project-name = "PoryTools Plugin API"
 project-url = "https://github.com/Myth7x/porytools"
 docformat = "google"
+# Sphinx ReadTheDocs look: dark left sidebar, "Search docs" box, contents tree.
+theme = "readthedocs"
 html-output = "site"
 make-html = true
 # Mirrors the old `mkdocs build --strict`: fail the build on any docstring
