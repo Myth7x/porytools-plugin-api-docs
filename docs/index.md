@@ -1,7 +1,5 @@
 ---
 title: PoryTools
-hide:
-  - navigation
 ---
 
 # PoryTools
