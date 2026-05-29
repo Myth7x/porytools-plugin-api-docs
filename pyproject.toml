@@ -15,6 +15,9 @@ project-url = "https://github.com/Myth7x/porytools"
 docformat = "google"
 # Sphinx ReadTheDocs look: dark left sidebar, "Search docs" box, contents tree.
 theme = "readthedocs"
+# Custom template dir: overrides head.html to load highlight.js (vendored) and
+# adds Lua syntax highlighting for the code examples. See pydoctor-templates/.
+template-dir = ["pydoctor-templates"]
 html-output = "site"
 make-html = true
 # Mirrors the old `mkdocs build --strict`: fail the build on any docstring
