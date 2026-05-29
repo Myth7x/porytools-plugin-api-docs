@@ -7,23 +7,19 @@ repo_url: https://github.com/Myth7x/porytools-plugin-api-docs
 
 theme:
   name: material
-  features:
-    # Let plugins/index.md serve as the clickable "Plugins" section landing
-    # page instead of appearing as a duplicate child entry.
-    - navigation.indexes
 
-# Explicit sidebar. Lua API is its own top-level section rather than being
-# nested under Plugins. Pages listed without a label inherit their H1.
+# Explicit sidebar. The plugin pages sit at the top level (no "Plugins"
+# grouping) so they're all directly visible; only Lua API is collapsed into
+# its own section. Pages listed without a label inherit their H1.
 nav:
   - index.md
-  - Plugins:
-      - plugins/index.md
-      - plugins/quickstart.md
-      - plugins/manifest.md
-      - plugins/multi-file.md
-      - plugins/cookbook.md
-      - plugins/examples.md
-      - plugins/errors.md
+  - plugins/index.md
+  - plugins/quickstart.md
+  - plugins/manifest.md
+  - plugins/multi-file.md
+  - plugins/cookbook.md
+  - plugins/examples.md
+  - plugins/errors.md
   - Lua API:
       - plugins/api/editor.md
       - plugins/api/file.md
