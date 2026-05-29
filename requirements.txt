@@ -2,7 +2,7 @@
 #
 # Used by:
 #   - .github/workflows/docs.yml (CI deploy)
-#   - local preview:  pip install -r docs/requirements.txt && mkdocs serve
+#   - local preview:  pip install -r requirements.txt && mkdocs serve
 #
 # mkdocs-material already depends on mkdocs, pymdown-extensions, and the
 # Material extensions package, so we only need to pin the top-level package.

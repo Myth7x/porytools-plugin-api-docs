@@ -9,8 +9,10 @@ on:
     branches:
       - master
     paths:
-      - 'docs/**'
+      - 'index.md'
+      - 'plugins/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
       - '.github/workflows/docs.yml'
   workflow_dispatch:
 
@@ -42,20 +44,22 @@ jobs:
         with:
           python-version: '3.x'
           cache: pip
-          cache-dependency-path: docs/requirements.txt
+          cache-dependency-path: requirements.txt
 
       - name: Install MkDocs Material
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r docs/requirements.txt
+          python -m pip install -r requirements.txt
 
       - name: Build site
-        run: mkdocs build --strict
+        # Build outside the repo root: docs_dir is the root, and MkDocs
+        # refuses to write site_dir into docs_dir.
+        run: mkdocs build --strict -d "$RUNNER_TEMP/site"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: ${{ runner.temp }}/site
 
   deploy:
     name: Deploy to GitHub Pages
