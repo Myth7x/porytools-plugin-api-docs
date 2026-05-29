@@ -1,0 +1,10 @@
+# Documentation build dependencies.
+#
+# Used by:
+#   - .github/workflows/docs.yml (CI deploy)
+#   - local preview:  pip install -r requirements.txt && pydoctor
+#
+# pydoctor reads the pt/ stub package and renders the API reference to site/.
+# Configuration lives in pyproject.toml under [tool.pydoctor].
+
+pydoctor>=25.10

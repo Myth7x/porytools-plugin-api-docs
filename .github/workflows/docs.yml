@@ -1,16 +1,17 @@
 name: Deploy docs
 
-# Build and deploy the MkDocs Material site at https://myth7x.github.io/porytools/.
-# Triggers on pushes to master that touch the docs, the config, or this workflow.
-# Can also be run manually from the Actions tab.
+# Build and deploy the pydoctor API reference to GitHub Pages.
+# Triggers on pushes to master that touch the pt/ stub package, the config, or
+# this workflow. Can also be run manually from the Actions tab.
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
+      - 'pt/**'
+      - 'pyproject.toml'
+      - 'requirements.txt'
       - '.github/workflows/docs.yml'
   workflow_dispatch:
 
@@ -32,25 +33,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          # Needed so mkdocs can show "last modified" dates if the
-          # git-revision-date plugin is later enabled.
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
           cache: pip
-          cache-dependency-path: docs/requirements.txt
+          cache-dependency-path: requirements.txt
 
-      - name: Install MkDocs Material
+      - name: Install pydoctor
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r docs/requirements.txt
+          python -m pip install -r requirements.txt
 
       - name: Build site
-        run: mkdocs build --strict
+        # Config (output dir, docformat, warnings-as-errors) lives in
+        # pyproject.toml under [tool.pydoctor]. warnings-as-errors mirrors
+        # the old `mkdocs build --strict`.
+        run: pydoctor
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

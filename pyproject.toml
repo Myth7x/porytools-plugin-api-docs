@@ -1,0 +1,20 @@
+# pydoctor configuration for the PoryTools Plugin API reference.
+#
+# The `pt/` package is a set of typed Python *stubs* that mirror the Lua
+# `pt.*` plugin API one-to-one. There is no runtime Python here — pydoctor
+# reads the source statically and renders the docstrings as an API reference.
+#
+# pydoctor picks this section up automatically (no --config needed). Build with:
+#   pip install -r requirements.txt && pydoctor
+# Output lands in site/ (git-ignored), the same dir the old MkDocs build used.
+
+[tool.pydoctor]
+add-package = ["pt"]
+project-name = "PoryTools Plugin API"
+project-url = "https://github.com/Myth7x/porytools"
+docformat = "google"
+html-output = "site"
+make-html = true
+# Mirrors the old `mkdocs build --strict`: fail the build on any docstring
+# parse error or broken cross-reference.
+warnings-as-errors = true
