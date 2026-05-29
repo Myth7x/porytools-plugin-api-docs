@@ -1,13 +1,13 @@
 name: Deploy docs
 
 # Build and deploy the MkDocs Material site at https://myth7x.github.io/porytools/.
-# Triggers on pushes to main that touch the docs, the config, or this workflow.
+# Triggers on pushes to master that touch the docs, the config, or this workflow.
 # Can also be run manually from the Actions tab.
 
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
